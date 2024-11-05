@@ -134,7 +134,7 @@ private:
     Vreme v;
 
 public:
-    explicit Avertizari(const Vreme& v_) : v{v_} {
+    explicit Avertizari(const Vreme &v_) : v{v_} {
         // cout<<"\t\t***Constructor de INITIALIZARE pentru Avertizari***"<<endl;
     }
 
@@ -183,7 +183,7 @@ private:
     vector<Vreme *> forecast;
 
 public:
-    explicit Forecast(vector<Vreme *> v) : forecast{move(v)} {
+    explicit Forecast(const vector <Vreme *> &v) : forecast{v} {
         // cout<<"\t\t***Constructor de INITIALIZARE pentru Forecast***"<<endl;
     }
 
