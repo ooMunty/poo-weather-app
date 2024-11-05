@@ -183,7 +183,7 @@ private:
     vector<Vreme *> forecast;
 
 public:
-    explicit Forecast(const vector <Vreme *> &v) : forecast{v} {
+    explicit Forecast(const vector<Vreme *> &v) : forecast{v} {
         // cout<<"\t\t***Constructor de INITIALIZARE pentru Forecast***"<<endl;
     }
 
