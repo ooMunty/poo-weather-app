@@ -54,6 +54,16 @@ add_executable(${PROJECT_NAME}
     main.cpp
     generated/src/Helper.cpp
     env_fixes.h
+        headers/Data.h
+        sources/Data.cpp
+        headers/Vreme.h
+        sources/Vreme.cpp
+        headers/Locatie.h
+        sources/Locatie.cpp
+        headers/Avertizari.h
+        sources/Avertizari.cpp
+        headers/Forecast.h
+        sources/Forecast.cpp
 )
 
 include(cmake/CompilerFlags.cmake)
