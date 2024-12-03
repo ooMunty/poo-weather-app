@@ -5,7 +5,7 @@ Data::Data(int o_, int z_, int l_, int a_) : ora(o_), zi(z_), luna(l_), an(a_) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Data &d) {
-    os << "Ora " << d.ora << " ziua " << d.zi << " a lunii " << d.luna << " din anul " << d.an;
+    os << "Ora " << d.ora << " ziua " << d.zi << " a lunii " << d.luna << " din anul " << d.an << "\n";
     return os;
 }
 
