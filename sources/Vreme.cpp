@@ -9,10 +9,10 @@
 #include <utility>
 
 
-
 // CLASA VREME
 Vreme::Vreme(const Locatie &locatie, double temperatura, double umiditate, std::string conditie, double presiune)
-    : locatie(locatie), temperatura(temperatura), umiditate(umiditate), conditie(std::move(conditie)), presiune(presiune) {
+    : locatie(locatie), temperatura(temperatura), umiditate(umiditate), conditie(std::move(conditie)),
+      presiune(presiune) {
     if (temperatura < -100 || temperatura > 100) {
         throw VremeInvalida("Temperatura trebuie sa fie intre -100 si 100 grade Celsius!");
     }
@@ -28,7 +28,8 @@ Vreme::Vreme(const Locatie &locatie, double temperatura, double umiditate, std::
 }
 
 Vreme::Vreme(const Vreme &other)
-    : locatie{other.locatie}, temperatura{other.temperatura}, umiditate{other.umiditate}, conditie{other.conditie}, presiune{other.presiune} {}
+    : locatie{other.locatie}, temperatura{other.temperatura}, umiditate{other.umiditate}, conditie{other.conditie},
+      presiune{other.presiune} {}
 
 Vreme &Vreme::operator=(const Vreme &other) {
     locatie = other.locatie;
@@ -41,8 +42,9 @@ Vreme &Vreme::operator=(const Vreme &other) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Vreme &v) {
-    return os << v.locatie << "\nTemperatura: " << v.temperatura << " grade\nUmiditate: " << v.umiditate << "%\nConditie: " << v.conditie
-              << "\nPresiune: " << v.presiune << " hPa";
+    return os << v.locatie << "\nTemperatura: " << v.temperatura << " grade\nUmiditate: " << v.umiditate <<
+           "%\nConditie: " << v.conditie
+           << "\nPresiune: " << v.presiune << " hPa";
 }
 
 double Vreme::calculeazaIndexCaldura() const {
@@ -51,14 +53,15 @@ double Vreme::calculeazaIndexCaldura() const {
     return hi;
 }
 
-std::unique_ptr<Vreme> Vreme::clone() const { throw VremeEroareClonare("Clonarea nu a fost implementata in clasa de baza!"); }
+std::unique_ptr<Vreme> Vreme::clone() const {
+    throw VremeEroareClonare("Clonarea nu a fost implementata in clasa de baza!"); }
 
 Vreme::~Vreme() = default;
 
 
-
 // CLASA VREMECURENTA
-VremeCurenta::VremeCurenta(const Locatie &locatie, double temperatura, double umiditate, std::string conditie, double presiune, double sansePp,
+VremeCurenta::VremeCurenta(const Locatie &locatie, double temperatura, double umiditate, std::string conditie,
+                           double presiune, double sansePp,
                            double feelsLike)
     : Vreme(locatie, temperatura, umiditate, std::move(conditie), presiune), sansePp(sansePp), feelsLike(feelsLike) {
     if (sansePp < 0 or sansePp > 100) {
@@ -91,9 +94,9 @@ double VremeCurenta::getFeelsLike() const {
 VremeCurenta::~VremeCurenta() = default;
 
 
-
 // CLASA VREMEFORECAST
-VremeForecast::VremeForecast(const Locatie &locatie, double temperatura, double umiditate, std::string conditie, double presiune, double maxTemp,
+VremeForecast::VremeForecast(const Locatie &locatie, double temperatura, double umiditate, std::string conditie,
+                             double presiune, double maxTemp,
                              double minTemp, double vitezaVant)
     : Vreme(locatie, temperatura, umiditate, std::move(conditie), presiune), maxTemp(maxTemp), minTemp(minTemp), vitezaVant(vitezaVant) {
     if (vitezaVant < 0 or vitezaVant > 250) {
@@ -105,8 +108,9 @@ VremeForecast::VremeForecast(const Locatie &locatie, double temperatura, double 
 }
 
 std::ostream &operator<<(std::ostream &os, const VremeForecast &vf) {
-    return os << static_cast<const Vreme &>(vf) << "\nTemperatura maxima: " << vf.maxTemp << " grade\nTemperatura minima: " << vf.minTemp
-              << " grade\nViteza vantului: " << vf.vitezaVant << "kmph";
+    return os << static_cast<const Vreme &>(vf) << "\nTemperatura maxima: " << vf.maxTemp <<
+           " grade\nTemperatura minima: " << vf.minTemp
+           << " grade\nViteza vantului: " << vf.vitezaVant << "kmph";
 }
 
 void VremeForecast::displayWarnings() const {
@@ -128,7 +132,8 @@ void VremeForecast::displayWarnings() const {
     }
 
     if (vitezaVant > 70) {
-        std::cout << "- Vant extrem: Viteza vantului e mai mare de 70 kmph. Evita activitatile ce presupun iesitul afara si in cazuri "
+        std::cout <<
+                "- Vant extrem: Viteza vantului e mai mare de 70 kmph. Evita activitatile ce presupun iesitul afara si in cazuri "
                      "extreme securizeaza obiectele periculoase!\n";
         WarningIssued = true;
     }
@@ -165,12 +170,12 @@ double VremeForecast::getVitezaVant() const {
 VremeForecast::~VremeForecast() = default;
 
 
-
 // CLASA VREMEPRECEDENTA
-VremePrecedenta::VremePrecedenta(const Locatie &locatie, double temperatura, double umiditate, std::string conditie, double presiune,
-    const Data &dateTime, std::string oras, std::string tara)
-        : Vreme(locatie, temperatura, umiditate, std::move(conditie), presiune),
-        dateTime(dateTime), oras(std::move(oras)), tara(std::move(tara)) {}
+VremePrecedenta::VremePrecedenta(const Locatie &locatie, double temperatura, double umiditate, std::string conditie,
+                                 double presiune,
+                                 const Data &dateTime, std::string oras, std::string tara)
+    : Vreme(locatie, temperatura, umiditate, std::move(conditie), presiune),
+      dateTime(dateTime), oras(std::move(oras)), tara(std::move(tara)) {}
 
 std::ostream &operator<<(std::ostream &os, const VremePrecedenta &vp) {
     return os << static_cast<const Vreme &>(vp) << "\nData: " << vp.dateTime << "\nOras: " << vp.oras << "\nTara: " << vp.tara;
@@ -187,11 +192,11 @@ Data VremePrecedenta::getDateTime() const {
     return dateTime;
 }
 
-std::string VremePrecedenta::getOras() const {
+const std::string &VremePrecedenta::getOras() const {
     return oras;
 }
 
-std::string VremePrecedenta::getTara() const {
+const std::string &VremePrecedenta::getTara() const {
     return tara;
 }
 

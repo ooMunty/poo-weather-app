@@ -9,18 +9,21 @@
 class VremeInvalida : public std::runtime_error {
 public:
     explicit VremeInvalida(const std::string &mesaj);
+
     ~VremeInvalida();
 };
 
 class VremeEroareClonare : public std::runtime_error {
 public:
     explicit VremeEroareClonare(const std::string &mesaj);
+
     ~VremeEroareClonare();
 };
 
 class StatieVremeEroareOperatii : public std::runtime_error {
 public:
     explicit StatieVremeEroareOperatii(const std::string &mesaj);
+
     ~StatieVremeEroareOperatii();
 };
 

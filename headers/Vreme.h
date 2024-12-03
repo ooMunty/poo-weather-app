@@ -50,6 +50,7 @@ public:
     [[nodiscard]] std::unique_ptr<Vreme> clone() const override;
 
     [[nodiscard]] double getSansePp() const;
+
     [[nodiscard]] double getFeelsLike() const;
 
     ~VremeCurenta() override;
@@ -73,7 +74,9 @@ public:
     [[nodiscard]] std::unique_ptr<Vreme> clone() const override;
 
     [[nodiscard]] double getMaxTemp() const;
+
     [[nodiscard]] double getMinTemp() const;
+
     [[nodiscard]] double getVitezaVant() const;
 
     ~VremeForecast() override;
@@ -95,8 +98,10 @@ public:
     [[nodiscard]] std::unique_ptr<Vreme> clone() const override;
 
     [[nodiscard]] Data getDateTime() const;
-    [[nodiscard]] std::string getOras() const;
-    [[nodiscard]] std::string getTara() const;
+
+    [[nodiscard]] const std::string &getOras() const;
+
+    [[nodiscard]] const std::string &getTara() const;
 
     ~VremePrecedenta() override;
 };

@@ -56,9 +56,11 @@ int main() {
 
     statie2.seteazaVreme(make_unique<VremePrecedenta>(l, 25, 15, "Rainy", 1060, d, "Bucharest", "RO"));
 
-    cout << "\n<< Inainte de schimbare >>\nInformatii statie 1: \n" << statie << "\n\nInformatii statie 2: \n" << statie2 << "\n";
+    cout << "\n<< Inainte de schimbare >>\nInformatii statie 1: \n" << statie << "\n\nInformatii statie 2: \n" <<
+            statie2 << "\n";
     schimba(statie, statie2);
-    cout << "\n<< Dupa schimbare >>\nInformatii statie 1: \n" << statie << "\n\nInformatii statie 2: \n" << statie2 << "\n\n";
+    cout << "\n<< Dupa schimbare >>\nInformatii statie 1: \n" << statie << "\n\nInformatii statie 2: \n" << statie2 <<
+            "\n\n";
 
     try {
         // valid, se afiseaza
@@ -70,7 +72,6 @@ int main() {
         StatieVreme testStation2;
         testStation2.seteazaVreme(make_unique<VremeCurenta>(l, 150, 93, "Thunderstorm", 1080, 90, 45));
         testStation2.display();
-
     } catch (const std::runtime_error &e) {
         cout << "\n\t" << e.what() << "\n";
     }
