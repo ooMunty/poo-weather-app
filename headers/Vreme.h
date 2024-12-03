@@ -22,12 +22,6 @@ public:
 
     Vreme(const Vreme &other);
 
-    [[nodiscard]] double getTemperatura() const;
-
-    [[nodiscard]] double getUmiditate() const;
-
-    [[nodiscard]] std::string &getConditie();
-
     Vreme &operator=(const Vreme &other);
 
     friend std::ostream &operator<<(std::ostream &os, const Vreme &v);
@@ -36,7 +30,7 @@ public:
 
     virtual void displayInfo() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Vreme> clone() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Vreme> clone() const;
 
     virtual ~Vreme();
 };

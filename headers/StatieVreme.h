@@ -17,13 +17,13 @@ public:
 
     explicit StatieVreme(std::unique_ptr<Vreme> v);
 
-    StatieVreme(const StatieVreme& other);
+    StatieVreme(const StatieVreme &other);
 
     //copy-swap
-    StatieVreme& operator=(StatieVreme other);
+    StatieVreme &operator=(StatieVreme other);
 
     //swap
-    friend void schimba(StatieVreme& unu, StatieVreme& doi) noexcept;
+    friend void schimba(StatieVreme &unu, StatieVreme &doi) noexcept;
 
     void seteazaVreme(std::unique_ptr<Vreme> v);
 

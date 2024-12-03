@@ -17,10 +17,13 @@ public:
 
     Locatie(double lat_, double long_);
 
+    [[nodiscard]] double getLatitudine() const;
+
+    [[nodiscard]] double getLongitudine() const;
+
     friend std::ostream &operator<<(std::ostream &os, const Locatie &l);
 
     ~Locatie();
 };
 
 #endif //LOCATIE_H
-

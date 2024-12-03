@@ -3,12 +3,13 @@
 //
 
 #include "../headers/StatieVreme.h"
+#include "../headers/Erori.h"
 
 StatieVreme::StatieVreme() : vreme(nullptr) {}
 
 StatieVreme::StatieVreme(std::unique_ptr<Vreme> v) : vreme(std::move(v)) {}
 
-StatieVreme::StatieVreme(const StatieVreme& other) : vreme(other.vreme ? other.vreme->clone() : nullptr) {}
+StatieVreme::StatieVreme(const StatieVreme &other) : vreme(other.vreme ? other.vreme->clone() : nullptr) {}
 
 //copy-swap
 StatieVreme &StatieVreme::operator=(StatieVreme other) {
@@ -17,7 +18,7 @@ StatieVreme &StatieVreme::operator=(StatieVreme other) {
 }
 
 //swap
-void schimba(StatieVreme& unu, StatieVreme& doi) noexcept{
+void schimba(StatieVreme &unu, StatieVreme &doi) noexcept {
     using std::swap;
     swap(unu.vreme, doi.vreme);
 }
@@ -30,6 +31,6 @@ void StatieVreme::display() const {
     if (vreme) {
         vreme->displayInfo();
     } else {
-        std::cout << "Nu exista informatii.\n";
+        throw StatieVremeEroareOperatii("Nu exista informatii de afisat!");
     }
 }

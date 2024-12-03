@@ -60,12 +60,10 @@ add_executable(${PROJECT_NAME}
         sources/Vreme.cpp
         headers/Locatie.h
         sources/Locatie.cpp
-        headers/Avertizari.h
-        sources/Avertizari.cpp
-        headers/Forecast.h
-        sources/Forecast.cpp
         headers/StatieVreme.h
         sources/StatieVreme.cpp
+        headers/Erori.h
+        sources/Erori.cpp
 )
 
 include(cmake/CompilerFlags.cmake)
