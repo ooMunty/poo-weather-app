@@ -3,15 +3,17 @@
 //
 
 #include "../headers/Erori.h"
+#include <string>
 
-VremeInvalida::VremeInvalida(const std::string &mesaj) : runtime_error(
-    "Eroare: date invalide pentru Vreme! >> " + mesaj) {
-}
 
-VremeEroareClonare::VremeEroareClonare(const std::string &mesaj) : runtime_error(
-    "Eroare: clonare nereusita pentru Vreme! >> " + mesaj) {
-}
+VremeInvalida::VremeInvalida(const std::string &mesaj)
+    : runtime_error(std::string("Eroare: date invalide pentru Vreme! >> ") + mesaj) {}
+VremeInvalida::~VremeInvalida() = default;
 
-StatieVremeEroareOperatii::StatieVremeEroareOperatii(const std::string &mesaj) : runtime_error(
-    "Eroare: operatie pe obiectul de tip StatieVreme nereusita! >> " + mesaj) {
-}
+VremeEroareClonare::VremeEroareClonare(const std::string &mesaj)
+    : runtime_error(std::string("Eroare: clonare nereusita pentru Vreme! >> ") + mesaj) {}
+VremeEroareClonare::~VremeEroareClonare() = default;
+
+StatieVremeEroareOperatii::StatieVremeEroareOperatii(const std::string &mesaj)
+    : runtime_error(std::string("Eroare: operatie pe obiectul de tip StatieVreme nereusita! >> ") + mesaj) {}
+StatieVremeEroareOperatii::~StatieVremeEroareOperatii() = default;

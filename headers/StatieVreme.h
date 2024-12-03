@@ -27,7 +27,11 @@ public:
 
     void seteazaVreme(std::unique_ptr<Vreme> v);
 
+    friend std::ostream &operator<<(std::ostream &os, const StatieVreme &sv);
+
     void display() const;
+
+    ~StatieVreme();
 };
 
 #endif //STATIEVREME_H

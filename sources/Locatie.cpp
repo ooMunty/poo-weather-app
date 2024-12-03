@@ -4,8 +4,7 @@
 
 #include "../headers/Locatie.h"
 
-Locatie::Locatie(double lat_, double long_) : latitudine(lat_), longitudine(long_) {
-}
+Locatie::Locatie(double lat_, double long_) : latitudine(lat_), longitudine(long_) {}
 
 double Locatie::getLatitudine() const {
     return latitudine;
