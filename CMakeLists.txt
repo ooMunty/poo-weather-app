@@ -65,7 +65,6 @@ add_executable(${PROJECT_NAME}
         headers/Erori.h
         sources/Erori.cpp
         headers/Average.h
-        sources/Average.cpp
 )
 
 include(cmake/CompilerFlags.cmake)

@@ -89,13 +89,17 @@ int main() {
     VremeCurenta vc1(l, 10, 93, "Thunderstorm", 1080, 90, 45);
     VremeCurenta vc2(l, 15, 93, "Thunderstorm", 1080, 90, 45);
     VremeCurenta vc3(l, 20, 93, "Thunderstorm", 1080, 90, 45);
-    calculeazaAverage<VremeCurenta>(vc1, vc2, vc3);
+    Average<VremeCurenta> ob1;
+    ob1.calculeazaAverage(vc1, vc2, vc3);
+
+
 
     //se asteapta un output de 25.4
     VremeForecast vf1(l, 20, 93, "Thunderstorm", 1020, 45, 35, 90);
     VremeForecast vf2(l, 25.5, 93, "Thunderstorm", 1020, 45, 35, 90);
     VremeForecast vf3(l, 30.7, 93, "Thunderstorm", 1020, 45, 35, 90);
-    calculeazaAverage<VremeForecast>(vf1, vf2, vf3);
+    Average<VremeForecast> ob2;
+    ob2.calculeazaAverage(vf1, vf2, vf3);
 
     cout << "\n\n";
 

@@ -41,8 +41,8 @@ Data::~Data() = default;
 
 
 Data DataFactory::dataCurenta() {
-    std::time_t t = std::time(0); //get current time
-    std::tm *now = std::localtime(&t);
+    const std::time_t t = std::time(0); //get current time
+    const std::tm *now = std::localtime(&t);
 
     return Data{(now->tm_hour) * 100 + now->tm_min, now->tm_mday, now->tm_mon + 1, now->tm_year + 1900};
 }

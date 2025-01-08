@@ -6,7 +6,16 @@
 #define AVERAGE_H
 
 template<typename T>
-void calculeazaAverage(T v1, T v2, T v3);
+class Average {
+public:
+    void calculeazaAverage(T ob1, T ob2, T ob3) {
+        double average = (ob1.getTemperatura() + ob2.getTemperatura() + ob3.getTemperatura()) / 3;
+        std::cout << "Temperatura medie pentru obiectele date, cu temperaturile t1: " << ob1.getTemperatura() <<
+                " grade, temperatura t2: "
+                << ob2.getTemperatura() << " grade si temperatura t3: " << ob3.getTemperatura() << " grade este: " <<
+                average
+                << "\n";
+    }
+};
 
-#include "../sources/Average.cpp"
 #endif //AVERAGE_H
