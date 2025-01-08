@@ -1,14 +1,15 @@
 #include "../headers/Data.h"
 #include <vector>
 #include <ctime>
+#include <string>
 
 Data::Data(int o_, int z_, int l_, int a_) : ora(o_), zi(z_), luna(l_), an(a_) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Data &d) {
     //se converteste la string pentru a evita eroare in cazul orelor de tipul ab:0c, care sunt afisate incorect
-    std::string ora_afisare = std::to_string(d.ora);
-    os << "Ora " << ora_afisare << " ziua " << d.zi << " a lunii " << d.luna << " din anul "
+    std::string oraAfisare = std::to_string(d.ora);
+    os << "Ora " << oraAfisare << " ziua " << d.zi << " a lunii " << d.luna << " din anul "
             << d.an;
     return os;
 }

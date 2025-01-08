@@ -2,8 +2,10 @@
 
 ### Descriere
 
-O aplicatie de vreme care foloseste programarea orientata pe obiecte si
-API-ul [OpenWeatherMap](https://openweathermap.org/) pentru a affisa diverse informatii despre vreme.
+O aplicatie care foloseste programarea orientata pe obiecte
+pentru a oferi un punct de plecare pentru o implementare mai dezvoltata a unei aplicatii de vreme. Prezinta clasele si
+metodele deja create, poate de exemplu fi folosita impreuna cu un api pentru a afisa informatii acurate cu privire la
+vremea curenta, cea trecuta etc.
 
 Nota: Testele au fost efectuate in fisierul main pentru niste date aleatorii
 
@@ -17,10 +19,9 @@ Descompunerea in clase, continuarea constructiei claselor etc.- v0.2
 
 ### Tema 3
 
-Tbd - v0.3
+Folosirea a doua sabloane de de proiectare (builder si factory), precum si implementarea unei clase sablon
 
 ## Resurse
 
 - [SFML](https://github.com/SFML/SFML/tree/2.6.1) (Zlib)
-- [OpenWeatherMap](https://openweathermap.org/)
 - [Geeksforgeeks](https://www.geeksforgeeks.org/) - pentru resursele legate de limbajul de programare C++

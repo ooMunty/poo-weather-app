@@ -73,10 +73,16 @@ int main() {
     cout << "Termenul limita al predarii proiectelor: " << pp << "\n\n\n";
 
     //este initializata doar longitudinea pentru obiectul de tip locatie, restul este lasat default
-    LocatieBuilder b;
-    Locatie locatie = b.seteazaLongitudine(10).build();
+    LocatieBuilder b1;
+    Locatie locatie1 = b1.seteazaLongitudine(10).build();
 
-    cout << locatie << "\n\n\n";
+    cout << "Locatie1:\n" << locatie1 << "\n\n";
+
+    //este initializata doar latitudinea pentru obiectul de tip locatie, restul este lasat default
+    LocatieBuilder b2;
+    Locatie locatie2 = b2.seteazaLatitudine(30).build();
+
+    cout << "Locatie2:\n" << locatie2 << "\n\n\n";
 
     //se asteapta un output de 15, deoarece media temperaturii celor 3 obiecte de
     //tip vreme este de (10+15+20)/3=15
