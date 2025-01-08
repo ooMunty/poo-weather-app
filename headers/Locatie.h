@@ -11,6 +11,7 @@ class Locatie {
 private:
     double latitudine{44.4};
     double longitudine{26.1};
+    friend class LocatieBuilder;
 
 public:
     Locatie() = default;
@@ -24,6 +25,16 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Locatie &l);
 
     ~Locatie();
+};
+
+class LocatieBuilder {
+private:
+    Locatie l;
+public:
+    LocatieBuilder() = default;
+    LocatieBuilder& seteazaLatitudine(double nr);
+    LocatieBuilder& seteazaLongitudine(double nr);
+    Locatie build();
 };
 
 #endif //LOCATIE_H

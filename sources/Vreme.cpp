@@ -29,7 +29,8 @@ Vreme::Vreme(const Locatie &locatie, double temperatura, double umiditate, std::
 
 Vreme::Vreme(const Vreme &other)
     : locatie{other.locatie}, temperatura{other.temperatura}, umiditate{other.umiditate}, conditie{other.conditie},
-      presiune{other.presiune} {}
+      presiune{other.presiune} {
+}
 
 Vreme &Vreme::operator=(const Vreme &other) {
     locatie = other.locatie;
@@ -53,8 +54,14 @@ double Vreme::calculeazaIndexCaldura() const {
     return hi;
 }
 
+double Vreme::getTemperatura() const {
+    return temperatura;
+}
+
+
 std::unique_ptr<Vreme> Vreme::clone() const {
-    throw VremeEroareClonare("Clonarea nu a fost implementata in clasa de baza!"); }
+    throw VremeEroareClonare("Clonarea nu a fost implementata in clasa de baza!");
+}
 
 Vreme::~Vreme() = default;
 
@@ -134,7 +141,7 @@ void VremeForecast::displayWarnings() const {
     if (vitezaVant > 70) {
         std::cout <<
                 "- Vant extrem: Viteza vantului e mai mare de 70 kmph. Evita activitatile ce presupun iesitul afara si in cazuri "
-                     "extreme securizeaza obiectele periculoase!\n";
+                "extreme securizeaza obiectele periculoase!\n";
         WarningIssued = true;
     }
 
@@ -175,7 +182,8 @@ VremePrecedenta::VremePrecedenta(const Locatie &locatie, double temperatura, dou
                                  double presiune,
                                  const Data &dateTime, std::string oras, std::string tara)
     : Vreme(locatie, temperatura, umiditate, std::move(conditie), presiune),
-      dateTime(dateTime), oras(std::move(oras)), tara(std::move(tara)) {}
+      dateTime(dateTime), oras(std::move(oras)), tara(std::move(tara)) {
+}
 
 std::ostream &operator<<(std::ostream &os, const VremePrecedenta &vp) {
     return os << static_cast<const Vreme &>(vp) << "\nData: " << vp.dateTime << "\nOras: " << vp.oras << "\nTara: " << vp.tara;

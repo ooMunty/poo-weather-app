@@ -64,6 +64,8 @@ add_executable(${PROJECT_NAME}
         sources/StatieVreme.cpp
         headers/Erori.h
         sources/Erori.cpp
+        headers/Average.h
+        sources/Average.cpp
 )
 
 include(cmake/CompilerFlags.cmake)

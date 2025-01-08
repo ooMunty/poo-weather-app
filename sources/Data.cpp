@@ -1,11 +1,14 @@
 #include "../headers/Data.h"
 #include <vector>
+#include <ctime>
 
 Data::Data(int o_, int z_, int l_, int a_) : ora(o_), zi(z_), luna(l_), an(a_) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Data &d) {
-    os << "Ora " << (d.ora) / 100 << ":" << (d.ora) % 100 << " ziua " << d.zi << " a lunii " << d.luna << " din anul "
+    //se converteste la string pentru a evita eroare in cazul orelor de tipul ab:0c, care sunt afisate incorect
+    std::string ora_afisare = std::to_string(d.ora);
+    os << "Ora " << ora_afisare << " ziua " << d.zi << " a lunii " << d.luna << " din anul "
             << d.an;
     return os;
 }
@@ -34,3 +37,19 @@ void Data::CalculeazaZileInLuna() const {
 }
 
 Data::~Data() = default;
+
+
+Data DataFactory::dataCurenta() {
+    std::time_t t = std::time(0); //get current time
+    std::tm *now = std::localtime(&t);
+
+    return Data{(now->tm_hour) * 100 + now->tm_min, now->tm_mday, now->tm_mon + 1, now->tm_year + 1900};
+}
+
+Data DataFactory::primaZiAn() {
+    return Data{1111, 1, 1, 2000};
+}
+
+Data DataFactory::dataPredareProiecte() {
+    return Data{2359, 9, 1, 2025};
+}

@@ -20,3 +20,18 @@ std::ostream &operator<<(std::ostream &os, const Locatie &l) {
 }
 
 Locatie::~Locatie() = default;
+
+
+LocatieBuilder &LocatieBuilder::seteazaLatitudine(double nr) {
+    l.latitudine = nr;
+    return *this;
+}
+
+LocatieBuilder &LocatieBuilder::seteazaLongitudine(double nr) {
+    l.longitudine = nr;
+    return *this;
+}
+
+Locatie LocatieBuilder::build() {
+    return l;
+}

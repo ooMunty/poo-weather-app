@@ -28,6 +28,8 @@ public:
 
     [[nodiscard]] virtual double calculeazaIndexCaldura() const;
 
+    [[nodiscard]] double getTemperatura() const;
+
     virtual void displayInfo() const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<Vreme> clone() const;

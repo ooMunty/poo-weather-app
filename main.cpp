@@ -4,6 +4,7 @@
 #include "headers/Locatie.h"
 #include "headers/StatieVreme.h"
 #include "headers/Vreme.h"
+#include "headers/Average.h"
 
 using namespace std;
 
@@ -62,11 +63,43 @@ int main() {
     cout << "\n<< Dupa schimbare >>\nInformatii statie 1: \n" << statie << "\n\nInformatii statie 2: \n" << statie2 <<
             "\n\n";
 
+    Data dc = DataFactory::dataCurenta();
+    cout << "Data curenta: " << dc << "\n";
+
+    Data pz = DataFactory::primaZiAn();
+    cout << "Data test pentru prima zi din anul 2000: " << pz << "\n";
+
+    Data pp = DataFactory::dataPredareProiecte();
+    cout << "Termenul limita al predarii proiectelor: " << pp << "\n\n\n";
+
+    //este initializata doar longitudinea pentru obiectul de tip locatie, restul este lasat default
+    LocatieBuilder b;
+    Locatie locatie = b.seteazaLongitudine(10).build();
+
+    cout << locatie << "\n\n\n";
+
+    //se asteapta un output de 15, deoarece media temperaturii celor 3 obiecte de
+    //tip vreme este de (10+15+20)/3=15
+    VremeCurenta vc1(l, 10, 93, "Thunderstorm", 1080, 90, 45);
+    VremeCurenta vc2(l, 15, 93, "Thunderstorm", 1080, 90, 45);
+    VremeCurenta vc3(l, 20, 93, "Thunderstorm", 1080, 90, 45);
+    calculeazaAverage<VremeCurenta>(vc1, vc2, vc3);
+
+    //se asteapta un output de 25.4
+    VremeForecast vf1(l, 20, 93, "Thunderstorm", 1020, 45, 35, 90);
+    VremeForecast vf2(l, 25.5, 93, "Thunderstorm", 1020, 45, 35, 90);
+    VremeForecast vf3(l, 30.7, 93, "Thunderstorm", 1020, 45, 35, 90);
+    calculeazaAverage<VremeForecast>(vf1, vf2, vf3);
+
+    cout << "\n\n";
+
     try {
         // valid, se afiseaza
         StatieVreme testStation1;
         testStation1.seteazaVreme(make_unique<VremeCurenta>(l, 42, 93, "Thunderstorm", 1080, 90, 45));
         testStation1.display();
+
+        cout << endl;
 
         // eroare: temperatura invalida
         StatieVreme testStation2;

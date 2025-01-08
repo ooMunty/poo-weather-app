@@ -8,6 +8,7 @@ private:
     int zi;
     int luna;
     int an;
+    friend class DataBuilder;
 
 public:
     Data(int o_, int z_, int l_, int a_);
@@ -19,6 +20,15 @@ public:
     void CalculeazaZileInLuna() const;
 
     ~Data();
+};
+
+class DataFactory {
+public:
+    static Data dataCurenta();
+
+    static Data primaZiAn();
+
+    static Data dataPredareProiecte();
 };
 
 #endif //DATA_H
