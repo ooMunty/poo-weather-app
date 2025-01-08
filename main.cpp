@@ -93,7 +93,6 @@ int main() {
     ob1.calculeazaAverage(vc1, vc2, vc3);
 
 
-
     //se asteapta un output de 25.4
     VremeForecast vf1(l, 20, 93, "Thunderstorm", 1020, 45, 35, 90);
     VremeForecast vf2(l, 25.5, 93, "Thunderstorm", 1020, 45, 35, 90);
